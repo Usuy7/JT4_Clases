@@ -10,7 +10,7 @@ public class Check {
 
     static Scanner tec = new Scanner(System.in);
     static int opc;
-    static String  answer;
+    static String answer;
     static int num;
     static private String result;
 
@@ -65,20 +65,21 @@ public class Check {
                 break;
         }
     }
-    
-    public static void Return (){
+
+    public static void Return() {
         System.out.println("Do you want to go back to the previous menu?");
-        answer = tec.nextLine();
-        if (answer.equalsIgnoreCase("yes")) {
-            Start();
-        } else if (answer.equalsIgnoreCase("no")){
-            System.out.println("Bye Bye");
-            System.exit(0);
-        }
+        do {
+            answer = tec.nextLine();
+            if (answer.equalsIgnoreCase("yes")) {
+                Start();
+            } else if (answer.equalsIgnoreCase("no")) {
+                System.out.println("Bye Bye");
+                System.exit(0);
+            }
+        } while (!answer.equalsIgnoreCase("yes") || !answer.equalsIgnoreCase("no"));
     }
 
     public static void Prime(int num) {
-        answer = tec.nextLine();
         int contador = 2;
         boolean prime = true;
         while ((prime) && (num != contador)) {
@@ -88,7 +89,7 @@ public class Check {
             contador++;
         }
         System.out.println("Bye Bye");
-        if (prime == true){
+        if (prime == true) {
             System.out.println("It's prime");
         } else {
             System.out.println("It is not prime");
