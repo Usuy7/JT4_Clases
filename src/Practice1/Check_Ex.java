@@ -18,7 +18,7 @@ public class Check_Ex {
         System.out.print("Enter a whole number: ");
         int num = tec.nextInt();
         Check check1 = new Check (num);
-        check1.print();
+        check1.Start();
     }
     
     public static void main(String[] args) {
