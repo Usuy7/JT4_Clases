@@ -9,13 +9,11 @@ import java.util.Scanner;
 public class Check {
 
     static Scanner tec = new Scanner(System.in);
+    static int num;
     static int opc;
     static String answer;
-    static int num;
-    static private String result;
 
-    public Check() {
-    }
+    public Check() {}
 
     public Check(int number) {
         this.num = number;
@@ -88,21 +86,21 @@ public class Check {
             }
             contador++;
         }
-        System.out.println("Bye Bye");
-        if (prime == true) {
-            System.out.println("It's prime");
-        } else {
-            System.out.println("It is not prime");
-        }
+        if (prime == true) System.out.println("It's prime");
+        else System.out.println("It is not prime");
         Return();
     }
 
-    public static String Older(int num) {
-        return null;
+    public static void Older(int num) {
+        if (num < 1900) System.out.println("It's lower");
+        else if (num > 1900) System.out.println("It's higher");
+        Return();
     }
 
-    public static String Par(int num) {
-        return null;
+    public static void Par(int num) {
+        if (num % 2 == 0) System.out.println("It's par");
+        else System.out.println("It is not par");
+        Return();
     }
 
     public static int Interval(int num) {
