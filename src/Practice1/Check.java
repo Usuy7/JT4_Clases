@@ -57,7 +57,7 @@ public class Check {
                 Leap(num);
                 break;
             case 6:
-                Symmetrical(num);
+                Symmetrical();
                 break;
             case 7:
                 Capicua(num);
@@ -138,11 +138,26 @@ public class Check {
         Return();
     }
 
-    public static String Symmetrical(int num) {
-        return null;
+    public static void Symmetrical() {
+        String new_word = "";
+
+        System.out.print("Ingresa una palabra: ");
+        String word = tec.nextLine();
+
+        for (int i = word.length() - 1; i >= 0; i--) {
+            new_word += word.charAt(i);
+        }
+        
+        if (word.equalsIgnoreCase(new_word)) {
+            System.out.println("It's symmetrical\n");
+        } else {
+            System.out.println("It is not symmetrical\n");
+        }
+        Return();
     }
 
-    public static String Capicua(int num) {
-        return null;
+    public static void Capicua(int num) {
+
+        Return();
     }
 }
