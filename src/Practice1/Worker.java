@@ -4,7 +4,7 @@ package Practice1;
  *
  * @author Javier
  */
-public class Employer {
+public class Worker {
     
     private String name;
     private String dni;
@@ -12,9 +12,9 @@ public class Employer {
     private int year_income;
     private int annual_salary;
     
-    public Employer () {}
+    public Worker () {}
     
-    public Employer (String name, String dni, char civil_status, int year_income, int annual_salary){
+    public Worker (String name, String dni, char civil_status, int year_income, int annual_salary){
         this.name = name;
         this.dni = dni;
         this.civil_status  = civil_status;
@@ -22,8 +22,10 @@ public class Employer {
         this.annual_salary = annual_salary;
     }
     
-    public void print (){
-        System.out.println("        Employer        " + "       ========        ");
+    @Override
+    public String toString (){
+        return "\n Name: " + getName() + "\n DNI: " + getDni() + "\n Civil Status: " + getCivil_status() + 
+                "\n Year of income: " + getYear_income() + "\n Annual Salary: " + getAnnual_salary();
     }
 
     /**
