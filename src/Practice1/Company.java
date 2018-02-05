@@ -63,10 +63,11 @@ public class Company {
             System.out.println("\nWorker nº: " + (i + 1));
             System.out.print(company[i].toString()); 
         }
-        System.out.println("\n********************");
+        System.out.println("\n********************\n");
     }
 
     public void Add() throws IOException {
+        System.out.println("\n********************");
         System.out.print("Name: ");
         String name = tec.readLine();
 
@@ -81,7 +82,7 @@ public class Company {
 
         System.out.print("Annual Salary: ");
         int annual_salary = Integer.parseInt(tec.readLine());
-
+        System.out.println("********************");
         Worker w1 = new Worker(name, dni, civil_status, year_income, annual_salary);
 
         int i = 0;
@@ -89,10 +90,15 @@ public class Company {
             // saldra cuando encuentré el primer nullo, la posicion quedara guardada en i
         }
         company[i] = w1;
-        System.out.println("\nWorker added\n");
+        System.out.println("Worker added");
+        System.out.println("********************");
     }
     
     public void Search () throws IOException {
+        
+    }
+    
+    public void Increase () throws IOException {
         
     }
 
