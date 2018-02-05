@@ -13,7 +13,8 @@ public class Check {
     static int opc;
     static String answer;
 
-    public Check() {}
+    public Check() {
+    }
 
     public Check(int number) {
         this.num = number;
@@ -65,10 +66,12 @@ public class Check {
     }
 
     public static void Return() {
+
         System.out.println("Do you want to go back to the previous menu?");
         do {
             answer = tec.nextLine();
             if (answer.equalsIgnoreCase("yes")) {
+                System.out.println("Reconnecting to the main menu...\n");
                 Start();
             } else if (answer.equalsIgnoreCase("no")) {
                 System.out.println("Bye Bye");
@@ -86,33 +89,53 @@ public class Check {
             }
             contador++;
         }
-        if (prime == true) System.out.println("It's prime");
-        else System.out.println("It is not prime");
+        if (prime == true) {
+            System.out.println("It's prime\n");
+        } else {
+            System.out.println("It is not prime\n");
+        }
         Return();
     }
 
     public static void Older(int num) {
-        if (num < 1900) System.out.println("It's lower");
-        else if (num > 1900) System.out.println("It's higher");
+        if (num < 1900) {
+            System.out.println("It's lower\n");
+        } else if (num > 1900) {
+            System.out.println("It's higher\n");
+        }
         Return();
     }
 
     public static void Par(int num) {
-        if (num % 2 == 0) System.out.println("It's par");
-        else System.out.println("It is not par");
+        if (num % 2 == 0) {
+            System.out.println("It's par\n");
+        } else {
+            System.out.println("It is not par\n");
+        }
         Return();
     }
 
-    public static int Interval(int num) {
+    public static void Interval(int num) {
 
-        int bot;
-        int top;
-
-        return 0;
+        System.out.println("Enter a whole number for the bot: ");
+        int bot = tec.nextInt();
+        System.out.println("Enter a whole number for the top: ");
+        int top = tec.nextInt();
+        if (num > bot && num < top) {
+            System.out.println("It's in the middle\n");
+        } else {
+            System.out.println("It is not in the middle\n");
+        }
+        Return();
     }
 
-    public static String Leap(int num) {
-        return null;
+    public static void Leap(int num) {
+        if (num % 4 == 0) {
+            System.out.println("It's leap\n");
+        } else {
+            System.out.println("It is not leap\n");
+        }
+        Return();
     }
 
     public static String Symmetrical(int num) {
