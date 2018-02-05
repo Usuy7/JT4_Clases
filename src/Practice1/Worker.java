@@ -24,8 +24,8 @@ public class Worker {
     
     @Override
     public String toString (){
-        return "\n Name: " + getName() + "\n DNI: " + getDni() + "\n Civil Status: " + getCivil_status() + 
-                "\n Year of income: " + getYear_income() + "\n Annual Salary: " + getAnnual_salary();
+        return "Name: " + getName() + "\nDNI: " + getDni() + "\nCivil Status: " + getCivil_status() + 
+                "\nYear of income: " + getYear_income() + "\nAnnual Salary: " + getAnnual_salary() + "\n";
     }
 
     /**
