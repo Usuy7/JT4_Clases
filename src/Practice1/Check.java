@@ -160,7 +160,17 @@ public class Check {
     }
 
     public static void Capicua(int num) {
-
+        
+       String number = String.valueOf(num);
+       String new_number = "";
+       for (int i = number.length() - 1; i >= 0; i--) {
+            new_number += number.charAt(i);
+        }
+        if (number.equalsIgnoreCase(new_number)) {
+            System.out.println("It's capicua\n");
+        } else {
+            System.out.println("It is not capicua\n");
+        }
         Return();
     }
 }
