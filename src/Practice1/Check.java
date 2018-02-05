@@ -62,6 +62,9 @@ public class Check {
             case 7:
                 Capicua(num);
                 break;
+            case 8:
+                System.out.println("Bye Bye");
+                System.exit(0);
         }
     }
 
@@ -143,11 +146,11 @@ public class Check {
 
         System.out.print("Ingresa una palabra: ");
         String word = tec.nextLine();
+        word = tec.nextLine();
 
         for (int i = word.length() - 1; i >= 0; i--) {
             new_word += word.charAt(i);
         }
-        
         if (word.equalsIgnoreCase(new_word)) {
             System.out.println("It's symmetrical\n");
         } else {
