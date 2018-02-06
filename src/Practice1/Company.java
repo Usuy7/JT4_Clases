@@ -100,10 +100,9 @@ public class Company {
 
         for (int i = 0; i < company.length && company[i] != null; i++) {
             if (company[i].getId().equals(id)) {
-                for (; i < company.length; i++) {
-                    company[i] = company[i + 1];
+                for (int j = i; j < company.length - 1; j++) {
+                    company[j] = company[j + 1];
                 }
-                company[i] = null;
             } else {
                 System.out.print("No worker has been found with this ID, try again: ");
                 id = tec.readLine();
