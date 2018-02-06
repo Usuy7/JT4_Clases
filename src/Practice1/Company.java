@@ -108,7 +108,8 @@ public class Company {
                 id = tec.readLine();
             }
         }
-        System.out.println("The worker has been deleted\n");
+        System.out.println("\nThe worker has been deleted");
+        System.out.println("*****************************\n");
     }
 
     public void Increase() throws IOException {
