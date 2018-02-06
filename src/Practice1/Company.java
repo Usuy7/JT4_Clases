@@ -12,14 +12,13 @@ public class Company {
 
     static BufferedReader tec = new BufferedReader(new InputStreamReader(System.in));
     static Worker company[] = new Worker[10];
-    static int opc;
 
     public Company() throws IOException {
         Start();
     }
 
     public void Start() throws IOException {
-
+        int opc;
         do {
             System.out.print("***COMPANY MENU***\n" + "1.Workers's List\n" + "2.Add worker\n"
                     + "3.Delete worker\n" + "4.Increase salary\n" + "5.Exit\n" + "Choose an opcion: ");
@@ -29,11 +28,13 @@ public class Company {
         } while (opc != 5);
     }
 
-    public static void Validate(int opc) throws IOException {
+    public void Validate(int opc) throws IOException {
 
-        while (opc < 0 || opc > 5) {
+        while (opc < 1 || opc > 5) {
             System.out.println("Fail you dummy, try again: ");
             opc = Integer.parseInt(tec.readLine());
+            Validate(opc);
+            Menu(opc);
         }
     }
 
