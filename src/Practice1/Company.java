@@ -95,36 +95,42 @@ public class Company {
     }
 
     public void Delete() throws IOException {
-        System.out.println("Enter the ID of the worker to be deleted:");
+        System.out.print("Enter the ID of the worker to be deleted: ");
         String id = tec.readLine();
 
         for (int i = 0; i < company.length && company[i] != null; i++) {
-            if (company[i].getId().equals(id) == false) {
-                System.out.println("No worker has been found with this ID, try again: ");
+            if (company[i].getId().equals(id)) {
+                for (; i < company.length; i++) {
+                    company[i] = company[i + 1];
+                }
+                company[i] = null;
+            } else {
+                System.out.print("No worker has been found with this ID, try again: ");
                 id = tec.readLine();
             }
         }
+        System.out.println("The worker has been deleted\n");
     }
 
     public void Increase() throws IOException {
-        System.out.println("Enter the ID of the worker to be modified:");
+        System.out.print("Enter the ID of the worker to be modified: ");
         String id = tec.readLine();
 
         for (int i = 0; i < company.length && company[i] != null; i++) {
             if (company[i].getId().equals(id) == false) {
-                System.out.println("No worker has been found with this ID, try again: ");
+                System.out.print("No worker has been found with this ID, try again: ");
                 id = tec.readLine();
             }
         }
 
-        System.out.println("Enter the percentage of increase: ");
+        System.out.print("Enter the percentage of increase: ");
         int more = Integer.parseInt(tec.readLine());
-        
+
         for (int i = 0; i < company.length && company[i] != null; i++) {
             int sum = (more * company[i].getAnnual_salary()) / 100;
             company[i].setAnnual_salary(company[i].getAnnual_salary() + sum);
         }
-        
+        System.out.println("Completed increase\n");
     }
 
     public static void main(String[] args) throws IOException {
