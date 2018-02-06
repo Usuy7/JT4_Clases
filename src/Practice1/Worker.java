@@ -7,16 +7,16 @@ package Practice1;
 public class Worker {
     
     private String name;
-    private String dni;
+    private String id;
     private char civil_status;
     private int year_income;
     private int annual_salary;
     
     public Worker () {}
     
-    public Worker (String name, String dni, char civil_status, int year_income, int annual_salary){
+    public Worker (String name, String id, char civil_status, int year_income, int annual_salary){
         this.name = name;
-        this.dni = dni;
+        this.id = id;
         this.civil_status  = civil_status;
         this.year_income = year_income;
         this.annual_salary = annual_salary;
@@ -24,10 +24,23 @@ public class Worker {
     
     @Override
     public String toString (){
-        return "Name: " + getName() + "\nDNI: " + getDni() + "\nCivil Status: " + getCivil_status() + 
+        return "Name: " + getName() + "\nID: " + getId() + "\nCivil Status: " + getCivil_status() + 
                 "\nYear of income: " + getYear_income() + "\nAnnual Salary: " + getAnnual_salary() + "\n";
     }
 
+    // método que devuelve la cantidad de años trabajados dada una fecha
+    public int years_worked (int nowadays){
+        if (nowadays <= year_income) return 0;
+        int result = nowadays - year_income;
+        return result;
+    }
+    
+    // método tipo int que incrementa el sueldo en un porcentaje 
+    public void increase (int percentage ){
+        int result = (annual_salary * percentage) / 100;
+        annual_salary += result;
+    }
+    
     /**
      * @return the name
      */
@@ -45,15 +58,15 @@ public class Worker {
     /**
      * @return the dni
      */
-    public String getDni() {
-        return dni;
+    public String getId() {
+        return id;
     }
 
-    /**
-     * @param dni the dni to set
+    /** 
+     * @param id the id to set
      */
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
