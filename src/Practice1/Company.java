@@ -59,12 +59,27 @@ public class Company {
     }
 
     public void List() {
+        Worker company_ordered[] = company.clone();
+        Order(company_ordered); // ordenamos el array por antigüedad
         System.out.println("\n***Workers's List***");
-        for (int i = 0; i < company.length && company[i] != null; i++) {
+        for (int i = 0; i < company_ordered.length  && company_ordered[i] != null; i++) {
             System.out.println("\nWorker nº: " + (i + 1));
-            System.out.print(company[i].toString());
+            System.out.print(company_ordered[i].toString());
         }
         System.out.println("\n********************\n");
+    }
+
+    public void Order(Worker company_ordered[]) {   
+        Worker aux;
+        for (int i = 0; i < company_ordered.length - 1 && company_ordered[i] != null; i++) {
+            for (int j = i + 1; j < company_ordered.length && company_ordered[j] != null; j++) {
+                if (company_ordered[i].getYear_income() > company_ordered[j].getYear_income()) {
+                    aux = company_ordered[i];
+                    company_ordered[i] = company_ordered[j];
+                    company_ordered[j] = aux;
+                }
+            }
+        }
     }
 
     public void Add() throws IOException {
@@ -72,10 +87,10 @@ public class Company {
         System.out.print("Name: ");
         String name = tec.readLine();
 
-        System.out.print("DNI: ");
+        System.out.print("Id: ");
         String id = tec.readLine();
 
-        System.out.print("Civil Status () ");
+        System.out.print("Civil Status (Single(S) / Married(M) / Divorced (D) / Widower (W)): ");
         char civil_status = 0;
 
         System.out.print("Year of income: ");
