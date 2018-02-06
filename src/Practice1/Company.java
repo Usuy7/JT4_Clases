@@ -91,13 +91,20 @@ public class Company {
         String id = tec.readLine();
 
         System.out.print("Civil Status (Single(S) / Married(M) / Divorced (D) / Widower (W)): ");
-        char civil_status = 0;
+        char civil_status = tec.readLine().charAt(0);
+        civil_status = Character.toUpperCase(civil_status);
+        
+        while (civil_status != 'S' || civil_status != 'M' || civil_status != 'D' || civil_status != 'W'){
+            System.out.println("You have FAILED brat: ");
+            civil_status = tec.readLine().charAt(0);
+        }
 
         System.out.print("Year of income: ");
         int year_income = Integer.parseInt(tec.readLine());
 
         System.out.print("Annual Salary: ");
         int annual_salary = Integer.parseInt(tec.readLine());
+        
         System.out.println("********************");
         Worker w1 = new Worker(name, id, civil_status, year_income, annual_salary);
 
