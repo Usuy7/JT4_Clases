@@ -13,8 +13,8 @@ public class Food {
     private boolean origin; // animal o no animal
     private char vitamins; // A alto, M medio y B bajo
     private char minerals; // A alto, M medio y B bajo
-    private boolean diethetic = false;
-    private boolean athlete = false; 
+    private boolean diethetic;
+    private boolean athlete; 
     
 
     public Food() {
@@ -36,13 +36,13 @@ public class Food {
 
     @Override
     public String toString() {
-        
+        diethetic = isDiethetic(lipids, vitamins);
         athlete = recommendedForAthletes(lipids, carbohydrates, proteins);
         
         return "\n***FOOD***" + "\nName: " + getName() + "\nLipids: " + getLipids()
                 + "\nCarbohydrates: " + getCarbohydrates() + "\nProteins: " + getProteins() + "\nOrigins: "
                 + isOrigin() + "\nVitamins: " + getVitamins() + "\nMinerals: " + getMinerals()
-                + "Energy Content: " + "Dietetico? " + diethetic + "Recomendado para deportistas? " + athlete;
+                + "\nEnergy Content: " + "\nDiethetic? " + diethetic + "\nRecomended for athletes? " + athlete;
     }
 
     // calcula las kcal/gramo del alimento
@@ -55,11 +55,14 @@ public class Food {
     }
 
     // lipidos por debajo del 20% y vitaminas (B)ajo
-    public boolean isDiethetic(double lipids) {
-        if (lipids < 20 && vitamins == 'B'){
-            diethetic = true;
+    public boolean isDiethetic(double lipids, char vitamins) {
+        boolean answer;
+        if (lipids < 20 && (vitamins == 'b' || vitamins == 'B')) {
+            answer = true;
+        } else {
+            answer = false;
         }
-        return diethetic;
+        return answer;
     }
     
     // proteínas 10-15 %, lípidos 30-35 % y hidratos de carbono 55-65%.
