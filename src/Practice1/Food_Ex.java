@@ -4,7 +4,6 @@ import static Practice1.Company.tec;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 /**
  *
@@ -21,19 +20,27 @@ public class Food_Ex {
     public Food_Ex() throws IOException {
         BufferedReader tec = new BufferedReader(new InputStreamReader(System.in));
 
+        double suma = 0;
+        
         System.out.println("***FOOD DATA***");
 
         System.out.print("Name: ");
         String name = tec.readLine();
+        
+        System.out.print("Weight: ");
+        double weight = Double.parseDouble(tec.readLine());
 
         System.out.print("Lipids: ");
         double lipids = Double.parseDouble(tec.readLine());
+        average(lipids);
 
         System.out.print("Carbohydrates: ");
         double carbohydrates = Double.parseDouble(tec.readLine());
+        average(carbohydrates);
 
         System.out.print("Proteins: ");
         double proteins = Double.parseDouble(tec.readLine());
+        average(proteins);
 
         System.out.print("Animal Origin (Y) or (N): ");
         char id = tec.readLine().charAt(0);
@@ -63,11 +70,29 @@ public class Food_Ex {
             minerals = tec.readLine().charAt(0);
         }
 
-        Food food1 = new Food(name, lipids, carbohydrates, proteins, origin, vitamins, minerals);
+        Food food1 = new Food(name, weight, lipids, carbohydrates, proteins, origin, vitamins, minerals);
         System.out.println(food1.toString());
 
     }
 
+    public final void suma(double lipids, double carbohydrates, double proteins) throws IOException{
+        double suma = lipids + carbohydrates + proteins;      
+        while (suma > 100){
+            System.out.println("The percentages do not fit correctly,  try again: ");
+            System.out.print("L: "); lipids = Double.parseDouble(tec.readLine());
+            System.out.print("C: "); carbohydrates = Double.parseDouble(tec.readLine());
+            System.out.print("P: "); proteins = Double.parseDouble(tec.readLine());
+        }
+    }
+    
+    public final void average(double num) throws IOException {
+    
+        while (num <= 0 || num >= 100){
+            System.out.print("Invalid value: ");
+            num = Double.parseDouble(tec.readLine());
+        }
+    }
+    
     public static void main(String[] args) throws IOException {
         new Food_Ex();
     }

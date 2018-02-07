@@ -7,6 +7,7 @@ package Practice1;
 public class Food {
 
     private String name;
+    private double weight;
     private double lipids; // expresado en tanto por ciento
     private double carbohydrates; // expresado en tanto por ciento
     private double proteins; // expresado en tanto por ciento
@@ -24,8 +25,9 @@ public class Food {
         this.name = name;
     }
 
-    public Food(String name, double lipids, double carbohydrates, double proteins, boolean origin, char vitamins, char minerals) {
+    public Food(String name, double weight, double lipids, double carbohydrates, double proteins, boolean origin, char vitamins, char minerals) {
         this.name = name;
+        this.weight = weight;
         this.lipids = lipids;
         this.carbohydrates = carbohydrates;
         this.proteins = proteins;
@@ -39,7 +41,7 @@ public class Food {
         diethetic = isDiethetic(lipids, vitamins);
         athlete = recommendedForAthletes(lipids, carbohydrates, proteins);
         
-        return "\n***FOOD***" + "\nName: " + getName() + "\nLipids: " + getLipids()
+        return "\n***FOOD***" + "\nName: " + getName() + "\nWeight: " + getWeight() + "\nLipids: " + getLipids()
                 + "\nCarbohydrates: " + getCarbohydrates() + "\nProteins: " + getProteins() + "\nOrigins: "
                 + isOrigin() + "\nVitamins: " + getVitamins() + "\nMinerals: " + getMinerals()
                 + "\nEnergy Content: " + "\nDiethetic? " + diethetic + "\nRecomended for athletes? " + athlete;
@@ -169,5 +171,19 @@ public class Food {
      */
     public void setMinerals(char minerals) {
         this.minerals = minerals;
+    }
+
+    /**
+     * @return the weight
+     */
+    public double getWeight() {
+        return weight;
+    }
+
+    /**
+     * @param weight the weight to set
+     */
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }
