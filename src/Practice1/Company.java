@@ -94,7 +94,7 @@ public class Company {
         char civil_status = tec.readLine().charAt(0);
         civil_status = Character.toUpperCase(civil_status);
         
-        while (civil_status != 'S' || civil_status != 'M' || civil_status != 'D' || civil_status != 'W'){
+        while (civil_status != 'S' && civil_status != 'M' && civil_status != 'D' && civil_status != 'W'){
             System.out.println("You have FAILED brat: ");
             civil_status = tec.readLine().charAt(0);
         }
@@ -114,11 +114,11 @@ public class Company {
         }
         company[pos] = w1;
         System.out.println("Worker added");
-        System.out.println("********************");
+        System.out.println("********************\n********************");
     }
 
     public void Delete() throws IOException {
-        System.out.print("Enter the ID of the worker to be deleted: ");
+        System.out.print("\nEnter the ID of the worker to be deleted: ");
         String id = tec.readLine();
 
         for (int i = 0; i < company.length && company[i] != null; i++) {
