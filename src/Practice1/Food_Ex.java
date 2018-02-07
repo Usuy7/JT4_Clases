@@ -32,16 +32,17 @@ public class Food_Ex {
 
         System.out.print("Lipids: ");
         double lipids = Double.parseDouble(tec.readLine());
-        average(lipids);
+        Average(lipids); // compruebo que el valor del porcentaje este entre 0 y 100%
 
         System.out.print("Carbohydrates: ");
         double carbohydrates = Double.parseDouble(tec.readLine());
-        average(carbohydrates);
+        Average(carbohydrates); // compruebo que el valor del porcentaje este entre 0 y 100%
 
         System.out.print("Proteins: ");
         double proteins = Double.parseDouble(tec.readLine());
-        average(proteins);
-
+        Average(proteins); // compruebo que el valor del porcentaje este entre 0 y 100%
+        Sum(lipids, carbohydrates, proteins); // compruebo que los porcentajes encajan
+        
         System.out.print("Animal Origin (Y) or (N): ");
         char id = tec.readLine().charAt(0);
         id = Character.toUpperCase(id);
@@ -75,17 +76,18 @@ public class Food_Ex {
 
     }
 
-    public final void suma(double lipids, double carbohydrates, double proteins) throws IOException{
+    public final void Sum(double lipids, double carbohydrates, double proteins) throws IOException{
         double suma = lipids + carbohydrates + proteins;      
         while (suma > 100){
-            System.out.println("The percentages do not fit correctly,  try again: ");
+            System.out.println("\nThe percentages do not fit correctly,  try again: ");
             System.out.print("L: "); lipids = Double.parseDouble(tec.readLine());
             System.out.print("C: "); carbohydrates = Double.parseDouble(tec.readLine());
             System.out.print("P: "); proteins = Double.parseDouble(tec.readLine());
+            suma = lipids + carbohydrates + proteins;
         }
     }
     
-    public final void average(double num) throws IOException {
+    public final void Average(double num) throws IOException {
     
         while (num <= 0 || num >= 100){
             System.out.print("Invalid value: ");
