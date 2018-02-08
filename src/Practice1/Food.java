@@ -14,9 +14,6 @@ public class Food {
     private boolean origin; // animal o no animal
     private char vitamins; // A alto, M medio y B bajo
     private char minerals; // A alto, M medio y B bajo
-    private boolean diethetic;
-    private boolean athlete; 
-    
 
     public Food() {
     }
@@ -36,43 +33,61 @@ public class Food {
         this.minerals = minerals;
     }
 
-    @Override
-    public String toString() {
-        diethetic = isDiethetic(lipids, vitamins);
-        athlete = recommendedForAthletes(lipids, carbohydrates, proteins);
-        
+    public String toString(double calories, String diethetic, String athlete) {
         return "\n***FOOD***" + "\nName: " + getName() + "\nWeight: " + getWeight() + "\nLipids: " + getLipids()
-                + "\nCarbohydrates: " + getCarbohydrates() + "\nProteins: " + getProteins() + "\nOrigins: "
+                + "\nCarbohydrates: " + getCarbohydrates() + "\nProteins: " + getProteins() + "\nAnimal Origin?: "
                 + isOrigin() + "\nVitamins: " + getVitamins() + "\nMinerals: " + getMinerals()
-                + "\nEnergy Content: " + "\nDiethetic? " + diethetic + "\nRecomended for athletes? " + athlete;
+                + "\nEnergy Content: " + calories + " kcal" + "\nDiethetic? " + diethetic + "\nRecomended for athletes? " + athlete;
+    }
+
+    public void Resultados() {
+        double calories = EnergyContent(weight, lipids, carbohydrates, proteins); // guardo el resultado de la suma de las kcal/g del alimento
+
+        boolean is_diethetic = isDiethetic(lipids, vitamins); // guardo si es o no dietetico y asigno una respuesta relativa
+        String diethetic = "";
+        if (is_diethetic == true) diethetic = "YES";
+        else if (is_diethetic == false) diethetic = "NO";
+        
+        boolean for_athlete = recommendedForAthletes(lipids, carbohydrates, proteins); // guardo si es o no apto para deportistas y asigno una respuesta relativa
+        String athlete = "";
+        if (for_athlete == true) athlete = "YES";
+        else if (for_athlete == false) athlete = "NO";
     }
 
     // calcula las kcal/gramo del alimento
-    // lípidos 1g = 9.4 Kcal
-    // proteinas 1g = 5.3 Kcal
-    // hidratos de carbono 1g = 4.1 Kcal.
-    public double EnergyContent() {
-        double calories = 0;
-        return calories;
+    public double EnergyContent(double weight, double lipids, double carbohydrates, double proteins) {
+
+        double g_lipidos = lipids * weight / 100; // calculo los gramos de lipidos según el peso del alimento y su % de lipidos
+        double kcal_lipidos = g_lipidos * 9.4 / 1; // calculo las kilocalorias de lipidos según su valor enérgetico por gramo: 1g = 9.4 Kcal
+
+        double g_carbohidratos = carbohydrates * weight / 100; // calculo los gramos de carbohidratos según el peso del alimento y su % de carbohidratos
+        double kcal_carbohidratos = g_carbohidratos * 5.3 / 1; // calculo las kilocalorias de carbohidratos según su valor enérgetico por gramo: 1g = 5.3 Kcal
+
+        double g_proteinas = proteins * weight / 100; // calculo los gramos de proteinas según el peso del alimento y su % de proteinas
+        double kcal_proteinas = g_proteinas * 4.1 / 1; // calculo las kilocalorias de proteinas según su valor enérgetico por gramo: 1g = 4.1 Kcal
+
+        double kcal_sum = kcal_lipidos + kcal_carbohidratos + kcal_proteinas; // sumo las kilocalorias resultantes y lo devuelvo en esta variable
+
+        return kcal_sum;
     }
 
     // lipidos por debajo del 20% y vitaminas (B)ajo
     public boolean isDiethetic(double lipids, char vitamins) {
         boolean answer;
-        if (lipids < 20 && (vitamins == 'b' || vitamins == 'B')) {
+        if (lipids < 20 && vitamins == 'B') answer = true;
+        else answer = false;
+        return answer;
+    }
+
+    // proteínas 10-15 %, lípidos 30-35 % y hidratos de carbono 55-65%.
+    public boolean recommendedForAthletes(double lipids, double carbohydrates, double proteins) {
+        boolean answer;
+        if ((proteins >= 10 && proteins <= 15) && (lipids >= 30 && lipids <= 35) && (carbohydrates >= 55 && carbohydrates <= 65)) {
             answer = true;
         } else {
             answer = false;
         }
         return answer;
-    }
-    
-    // proteínas 10-15 %, lípidos 30-35 % y hidratos de carbono 55-65%.
-    public boolean recommendedForAthletes(double lipids, double carbohydrates, double proteins) {
-        if ((proteins >= 10 || proteins <= 15) && (lipids >= 30) || (lipids <= 35) && (carbohydrates >= 55 || carbohydrates <= 65)) {
-            athlete = true;
-        }
-        return athlete;
     }
 
     /**
