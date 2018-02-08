@@ -30,6 +30,7 @@ public class Food_Ex {
         
         System.out.print("Weight: ");
         double weight = Double.parseDouble(tec.readLine());
+        isNumber(weight);
 
         System.out.print("Lipids: ");
         double lipids = Double.parseDouble(tec.readLine());
@@ -105,6 +106,30 @@ public class Food_Ex {
             System.out.print("Invalid value: ");
             num = Double.parseDouble(tec.readLine());
         }
+    }
+    
+    public final void isNumber(double number) throws IOException {
+
+        boolean val = false;
+        String cadena = String.valueOf(number);
+        cadena = cadena.toLowerCase();
+
+        do {
+            while (cadena.equals("")) {
+                System.out.print("Ingresa algún dato: ");
+                cadena = tec.readLine();
+            }
+            for (int i = 0; i < cadena.length(); i++) {
+                val = true;
+                if (!Character.isDigit(cadena.charAt(i))) {
+                    val = false;
+                }
+            }
+            if (val == false) {
+                System.out.print("Error, ingresa un número: ");
+                cadena = tec.readLine();
+            }
+        } while (!val);
     }
     
     public final void isLetter(String cadena) throws IOException {
