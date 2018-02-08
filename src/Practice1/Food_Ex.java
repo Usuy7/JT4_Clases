@@ -44,38 +44,49 @@ public class Food_Ex {
         Sum(lipids, carbohydrates, proteins); // compruebo que los porcentajes encajan
         
         System.out.print("Animal Origin (Y) or (N): ");
-        char id = tec.readLine().charAt(0);
-        id = Character.toUpperCase(id);
-        while (id != 'Y' && id != 'N') {
-            System.out.print("NOPEEE, fail dummy: ");
-            id = tec.readLine().charAt(0);
-        }
-        boolean origin = false;
-        if (id == 'Y') {
-            origin = true;
-        }
-
+        char animal = tec.readLine().charAt(0);
+        animal = Character.toUpperCase(animal); // convierto a mayúsculas el carácter
+        Animal(animal); // me aseguro de que el carácter proporcionado cumple los estándares
+        
+        boolean origin = false; // asigno un resultado según la respuesta del usuario
+        if (animal == 'Y') origin = true;
+        
         System.out.print("Vitamins: (A) (M) (B): ");
         char vitamins = tec.readLine().charAt(0);
-        vitamins = Character.toUpperCase(vitamins);
-        while (vitamins != 'A' && vitamins != 'M' && vitamins != 'B') {
-            System.out.print("You have FAILED brat: ");
-            vitamins = tec.readLine().charAt(0);
-        }
+        vitamins = Character.toUpperCase(vitamins); // convierto a mayúsculas el carácter
+        Vitamins(vitamins); // me aseguro de que el carácter proporcionado cumple los estándares
 
         System.out.print("Minerals: (A) (M) (B): ");
         char minerals = tec.readLine().charAt(0);
-        minerals = Character.toUpperCase(minerals);
-        while (minerals != 'A' && minerals != 'M' && minerals != 'B') {
-            System.out.print("You have FAILED brat: ");
-            minerals = tec.readLine().charAt(0);
-        }
+        minerals = Character.toUpperCase(minerals); // convierto a mayúsculas el carácter
+        Minerals(minerals); // me aseguro de que el carácter proporcionado cumple los estándares
 
         Food food1 = new Food(name, weight, lipids, carbohydrates, proteins, origin, vitamins, minerals);
         System.out.println(food1.toString());
 
     }
-
+    
+    public final void Minerals(char minerals) throws IOException{
+        while (minerals != 'A' && minerals != 'M' && minerals != 'B') {
+            System.out.print("You have FAILED brat: ");
+            minerals = tec.readLine().charAt(0);
+        }
+    }
+    
+    public final void Vitamins(char vitamins) throws IOException{
+        while (vitamins != 'A' && vitamins != 'M' && vitamins != 'B') {
+            System.out.print("You have FAILED brat: ");
+            vitamins = tec.readLine().charAt(0);
+        }
+    }
+    
+    public final void Animal(char animal) throws IOException{
+        while (animal != 'Y' && animal != 'N') {
+            System.out.print("NOPEEE, fail dummy: ");
+            animal = tec.readLine().charAt(0);
+        }
+    }
+    
     public final void Sum(double lipids, double carbohydrates, double proteins) throws IOException{
         double suma = lipids + carbohydrates + proteins;      
         while (suma > 100){
