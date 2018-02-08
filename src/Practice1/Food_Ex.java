@@ -22,10 +22,11 @@ public class Food_Ex {
 
         double suma = 0;
         
-        System.out.println("***FOOD DATA***");
+        System.out.println("***FOOD DATA***\n");
 
         System.out.print("Name: ");
         String name = tec.readLine();
+        isLetter(name);
         
         System.out.print("Weight: ");
         double weight = Double.parseDouble(tec.readLine());
@@ -104,6 +105,26 @@ public class Food_Ex {
             System.out.print("Invalid value: ");
             num = Double.parseDouble(tec.readLine());
         }
+    }
+    
+    public final void isLetter(String cadena) throws IOException {
+        boolean val = false;
+        do {
+            while (cadena.equals("")) {
+                System.out.print("Ingresa algún dato: ");
+                cadena = tec.readLine();
+            }
+            for (int i = 0; i < cadena.length(); i++) {
+                val = true;
+                if (!Character.isLetter(cadena.charAt(i))) {
+                    val = false;
+                }
+            }
+            if (!val) {
+                System.out.print("Error, ingresa solo carácteres alfabeticos: ");
+                cadena = tec.readLine();
+            }
+        } while (!val);
     }
     
     public static void main(String[] args) throws IOException {
