@@ -33,14 +33,9 @@ public class Food {
         this.minerals = minerals;
     }
 
-    public String toString(double calories, String diethetic, String athlete) {
-        return "\n***FOOD***" + "\nName: " + getName() + "\nWeight: " + getWeight() + "\nLipids: " + getLipids()
-                + "\nCarbohydrates: " + getCarbohydrates() + "\nProteins: " + getProteins() + "\nAnimal Origin?: "
-                + isOrigin() + "\nVitamins: " + getVitamins() + "\nMinerals: " + getMinerals()
-                + "\nEnergy Content: " + calories + " kcal" + "\nDiethetic? " + diethetic + "\nRecomended for athletes? " + athlete;
-    }
-
-    public void Resultados() {
+    @Override
+    public String toString() {
+        
         double calories = EnergyContent(weight, lipids, carbohydrates, proteins); // guardo el resultado de la suma de las kcal/g del alimento
 
         boolean is_diethetic = isDiethetic(lipids, vitamins); // guardo si es o no dietetico y asigno una respuesta relativa
@@ -52,6 +47,11 @@ public class Food {
         String athlete = "";
         if (for_athlete == true) athlete = "YES";
         else if (for_athlete == false) athlete = "NO";
+        
+        return "\n***FOOD***" + "\nName: " + getName() + "\nWeight: " + getWeight() + "\nLipids: " + getLipids()
+                + "\nCarbohydrates: " + getCarbohydrates() + "\nProteins: " + getProteins() + "\nAnimal Origin?: "
+                + isOrigin() + "\nVitamins: " + getVitamins() + "\nMinerals: " + getMinerals() + "\nEnergy Content: " 
+                + calories + " kcal" + "\nDiethetic? " + diethetic + "\nRecomended for athletes? " + athlete;
     }
 
     // calcula las kcal/gramo del alimento
@@ -74,8 +74,11 @@ public class Food {
     // lipidos por debajo del 20% y vitaminas (B)ajo
     public boolean isDiethetic(double lipids, char vitamins) {
         boolean answer;
-        if (lipids < 20 && vitamins == 'B') answer = true;
-        else answer = false;
+        if (lipids < 20 && (vitamins == 'b' || vitamins == 'B')) {
+            answer = true;
+        } else {
+            answer = false;
+        }
         return answer;
     }
 
