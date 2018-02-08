@@ -166,7 +166,7 @@ public class Metodos {
                 }
             }
             if (!val) {
-                System.out.print("Error, ingresa una cadena alfabetica: ");
+                System.out.print("Error, ingresa solo carácteres alfabeticos: ");
                 cadena = tec.nextLine();
             }
         } while (!val);
