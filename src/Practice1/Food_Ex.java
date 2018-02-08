@@ -30,7 +30,7 @@ public class Food_Ex {
         
         System.out.print("Weight: ");
         double weight = Double.parseDouble(tec.readLine());
-        isNumber(weight);
+        //isNumber(weight);
 
         System.out.print("Lipids: ");
         double lipids = Double.parseDouble(tec.readLine());
