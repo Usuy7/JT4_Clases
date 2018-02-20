@@ -37,8 +37,7 @@ public class Worker {
     
     // método tipo int que incrementa el sueldo en un porcentaje 
     public void increase (int percentage ){
-        int result = (annual_salary * percentage) / 100;
-        annual_salary += result;
+        this.annual_salary = (annual_salary * percentage) / 100;
     }
     
     /**
